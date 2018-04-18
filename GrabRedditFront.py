@@ -33,14 +33,14 @@ def grabRedditFront(subreddit):
       logging.debug("imgur link found")
       if holdinfo['data']['children'][x]['data']['domain'] == 'imgur.com':
         pictureurl = pictureurl + ".jpg"
-      logging.info ('[{}] '.format(x) + pictureurl)
+      logging.info('[{}] '.format(x) + pictureurl)
       urllib.request.urlretrieve (pictureurl, shortenname(pictureurl))
     elif "i.redd.it" in holdinfo['data']['children'][x]['data']['domain']:
-      logging.info ('[{}] '.format(x) + pictureurl)
+      logging.info('[{}] '.format(x) + pictureurl)
       urllib.request.urlretrieve (pictureurl, shortenname(pictureurl))
     else:
       logging.warning('[{}] '.format(x) + "Unrecognized domain:{0}".format(holdinfo['data']['children'][x]['data']['domain']))
-  print ("Done!") 
+  logging.info("Done!") 
 
 def shortenname(name):
   found = False
